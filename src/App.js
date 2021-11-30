@@ -36,7 +36,7 @@ class App extends React.Component {
   }
 
   handleAddItem = item => {
-    console.log("App add Item")
+    // console.log("App add Item")
     const newTodoItem = {
       task: item,
       id: Date.now(),
@@ -47,11 +47,11 @@ class App extends React.Component {
       ...this.state,
       todolists: [...this.state.todolists, newTodoItem]
     })
-    console.log("App this.state = ", this.state);
+    // console.log("App this.state = ", this.state);
   }
 
   handleToggleItem = (item) => {
-    console.log("handleToggleItem")
+    // console.log("handleToggleItem")
     this.setState({
       ...this.state,
       todolists: this.state.todolists.map(todolist=>{
@@ -68,7 +68,7 @@ class App extends React.Component {
   }
   
   render() {
-    console.log("APP ", this.state.todolists)
+    // console.log("APP ", this.state.todolists)
     return (
       <div className="App">
          <h1>Todo List: MVP</h1>
