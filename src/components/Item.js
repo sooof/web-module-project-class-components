@@ -2,8 +2,12 @@ import React from 'react';
 
 const Item = props => {
 
+    const handleClick = () =>{
+        console.log(Item)
+        props.handleToggleItem(props.item)
+    }
   return (
-    <div className={`item${props.item.completed ? ' completed' : ''}`}>
+    <div onClick={handleClick} className={`item${props.item.completed ? ' completed' : ''}`}>
       <p>{props.item.task}</p>
     </div>
   );

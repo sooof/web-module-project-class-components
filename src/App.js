@@ -8,7 +8,7 @@ const todolists =[
   {
     task: 'Organize Garage',
     id: 1528817077286,
-    completed: true
+    completed: false
   },
   {
     task: 'Bake Cookies',
@@ -31,7 +31,7 @@ class App extends React.Component {
   handleClearItem = () =>{
     this.setState({
       ...this.state,
-      todolists: todolists.filter(item => (!item.completed))
+      todolists: this.state.todolists.filter(item => !item.completed)
     })
   }
 
@@ -49,13 +49,30 @@ class App extends React.Component {
     })
     console.log("App this.state = ", this.state);
   }
+
+  handleToggleItem = (item) => {
+    console.log("handleToggleItem")
+    this.setState({
+      ...this.state,
+      todolists: this.state.todolists.map(todolist=>{
+        if(todolist.id === item.id){
+          return{
+            ...todolist,
+            completed: !todolist.completed
+          }
+        }
+        return todolist
+        
+      })
+    })
+  }
   
   render() {
     console.log("APP ", this.state.todolists)
     return (
       <div className="App">
          <h1>Todo List: MVP</h1>
-        <TodoList todolists={this.state.todolists}/>
+        <TodoList handleToggleItem={this.handleToggleItem} todolists={this.state.todolists}/>
         <TodoForm handleAddItem={this.handleAddItem} />
         <button onClick={this.handleClearItem} className="clear-btn">Clear Purchased</button>
       </div>
